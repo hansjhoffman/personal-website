@@ -1,27 +1,61 @@
 import { FC } from "react";
 import Head from "next/head";
-import { Heading1 } from "@ui/components/Typography/Typography";
+import styled from "styled-components";
 
-import styles from "./styles.module.scss";
+/*
+ * Styles
+ */
+
+const HeroSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+`;
+
+const HeroPreTitle = styled.div`
+  position: relative;
+  display: flex;
+  font-family: "PT Sans", sans-serif;
+  font-size: 4rem;
+  line-height: 1em;
+  color: ${({ theme }) => theme.colors.primary};
+`;
+
+const HeroTitle = styled.h1`
+  font-family: "Playfair Display", sans-serif;
+  font-size: 10rem;
+  line-height: 1em;
+`;
+
+const HeroDesc = styled.div`
+  position: relative;
+  font-size: 2rem;
+  line-height: 1em;
+`;
+
+/*
+ * Component
+ */
 
 const Home: FC = () => {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>Hans Hoffman</title>
         <link href="/favicon.ico" rel="icon" />
       </Head>
 
       <main>
-        <div className={styles.hero}>
-          <div className={styles.heroPreTitle}>Hello, I'm</div>
-          <h1 className={styles.heroTitle}>
+        <HeroSection>
+          <HeroPreTitle>Hello, I'm</HeroPreTitle>
+          <HeroTitle>
             Hans
             <br />
             Hoffman
-          </h1>
-          <div className={styles.heroDesc}>Fullstack web & mobile developer</div>
-        </div>
+          </HeroTitle>
+          <HeroDesc>Fullstack web & mobile developer</HeroDesc>
+        </HeroSection>
       </main>
     </>
   );

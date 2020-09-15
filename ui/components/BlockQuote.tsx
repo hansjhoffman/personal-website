@@ -1,6 +1,5 @@
 import { FC } from "react";
-
-import styles from "./styles.module.scss";
+import styled from "styled-components";
 
 /*
  * Types
@@ -12,11 +11,17 @@ type BlockQuoteProps = {
 };
 
 /*
+ * Styles
+ */
+
+const El = styled.blockquote``;
+
+/*
  * Component
  */
 
 export const BlockQuote: FC<BlockQuoteProps> = (props) => {
   const { children, author } = props;
 
-  return <blockquote className={styles.blockquote}>{children}</blockquote>;
+  return <El>{children}</El>;
 };

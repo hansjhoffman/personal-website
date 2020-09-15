@@ -1,7 +1,10 @@
-import { FC, StrictMode } from "react";
+import React, { FC, StrictMode } from "react";
 import { AppProps } from "next/app";
+import { ThemeProvider } from "styled-components";
+import { defaultTheme } from "@ui/theme";
+import { GlobalStyle } from "@ui/theme/globals";
 
-import "styles/globals.scss";
+import "styles/app.css";
 
 /*
  * Types
@@ -16,7 +19,10 @@ const App: FC<AppProps> = (props) => {
 
   return (
     <StrictMode>
-      <Component {...pageProps} />
+      <ThemeProvider theme={defaultTheme}>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </StrictMode>
   );
 };
