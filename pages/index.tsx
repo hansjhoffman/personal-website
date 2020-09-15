@@ -1,6 +1,8 @@
 import { FC } from "react";
 import Head from "next/head";
 import styled from "styled-components";
+import { Body1, Heading1, Heading5 } from "@ui/components/Typography";
+import { Palette } from "@ui/theme";
 
 /*
  * Styles
@@ -10,28 +12,11 @@ const HeroSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
-`;
+  min-height: inherit;
 
-const HeroPreTitle = styled.div`
-  position: relative;
-  display: flex;
-  font-family: "PT Sans", sans-serif;
-  font-size: 4rem;
-  line-height: 1em;
-  color: ${({ theme }) => theme.colors.primary};
-`;
-
-const HeroTitle = styled.h1`
-  font-family: "Playfair Display", sans-serif;
-  font-size: 10rem;
-  line-height: 1em;
-`;
-
-const HeroDesc = styled.div`
-  position: relative;
-  font-size: 2rem;
-  line-height: 1em;
+  @media only screen and (min-width: 769px) {
+    align-items: center;
+  }
 `;
 
 /*
@@ -48,13 +33,12 @@ const Home: FC = () => {
 
       <main>
         <HeroSection>
-          <HeroPreTitle>Hello, I'm</HeroPreTitle>
-          <HeroTitle>
-            Hans
-            <br />
-            Hoffman
-          </HeroTitle>
-          <HeroDesc>Fullstack web & mobile developer</HeroDesc>
+          <Heading5 color={Palette.orange}>Fullstack web & mobile developer</Heading5>
+          <Heading1>Hans Hoffman</Heading1>
+          <Body1>
+            I&apos;m a Software Engineer, budding entrepreneur, dog lover, avid reader and a 81kg
+            Olympic Weightlifter.
+          </Body1>
         </HeroSection>
       </main>
     </>
@@ -62,3 +46,5 @@ const Home: FC = () => {
 };
 
 export default Home;
+
+// You&apos;re either a simplifier or a multiplier. Which one are you?

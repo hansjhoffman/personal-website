@@ -11,11 +11,15 @@ declare module "styled-components" {
   }
 }
 
+export enum Palette {
+  orange = "#ffc16c",
+}
+
 export const defaultTheme: DefaultTheme = {
   colors: {
     bg: "#191b2a",
     fg: "#ffffff",
     primary: "#ffc16c",
   },
-  lineHeight: 1.618,
+  lineHeight: 1.5,
 };

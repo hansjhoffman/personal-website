@@ -1,30 +1,37 @@
 import { FC } from "react";
-
-import styles from "./styles.module.scss";
 import styled from "styled-components";
+import { Colors } from "@ui/theme";
+
+/*
+ * Types
+ */
+
+export type TypographyProps = {
+  color?: Colors;
+};
 
 /*
  * Styles
  */
 
-const H1 = styled.h1`
-  font-size: 4rem;
+const H1 = styled.h1<TypographyProps>`
+  font-size: 6rem;
   font-family: "Playfair Display", sans-serif;
   font-weight: 600;
-  line-height: ${({ theme }) => theme.lineHeight}; // how to mult by 1em??
+  line-height: ${({ theme }) => `${theme.lineHeight}em`};
   color: ${({ theme }) => theme.colors.fg};
   letter-spacing: 0;
 
   @media only screen and (min-width: 769px) {
-    font-size: 4.6rem;
+    font-size: 9.6rem;
   }
 `;
 
-const H2 = styled.h1`
+const H2 = styled.h2<TypographyProps>`
   font-size: 2.8rem;
   font-family: "Playfair Display", sans-serif;
   font-weight: 600;
-  line-height: ${({ theme }) => theme.lineHeight}; // how to mult by 1em??
+  line-height: ${({ theme }) => `${theme.lineHeight}em`};
   color: ${({ theme }) => theme.colors.fg};
   letter-spacing: 0;
 
@@ -33,24 +40,11 @@ const H2 = styled.h1`
   }
 `;
 
-const H3 = styled.h1`
+const H3 = styled.h3<TypographyProps>`
   font-size: 2rem;
   font-family: "Playfair Display", sans-serif;
   font-weight: 600;
-  line-height: ${({ theme }) => theme.lineHeight}; // how to mult by 1em??
-  color: ${({ theme }) => theme.colors.fg};
-  letter-spacing: 0;
-
-  @media only screen and (min-width: 769px) {
-    font-size: 323rem;
-  }
-`;
-
-const H4 = styled.h1`
-  font-size: 2rem;
-  font-family: "Playfair Display", sans-serif;
-  font-weight: 600;
-  line-height: ${({ theme }) => theme.lineHeight}; // how to mult by 1em??
+  line-height: ${({ theme }) => `${theme.lineHeight}em`};
   color: ${({ theme }) => theme.colors.fg};
   letter-spacing: 0;
 
@@ -59,72 +53,97 @@ const H4 = styled.h1`
   }
 `;
 
-const Body = styled.p`
+const H4 = styled.h4<TypographyProps>`
+  font-size: 2rem;
+  font-family: "Playfair Display", sans-serif;
+  font-weight: 600;
+  line-height: ${({ theme }) => `${theme.lineHeight}em`};
+  color: ${(props) => (props.color ? props.color : props.theme.colors.fg)};
+  letter-spacing: 0;
+
+  @media only screen and (min-width: 769px) {
+    font-size: 2.3rem;
+  }
+`;
+
+const Subtitle = styled.h5<TypographyProps>`
+  font-size: 1.9rem;
+  font-family: "PT Sans", sans-serif;
+  font-weight: 600;
+  line-height: ${({ theme }) => `${theme.lineHeight}em`};
+  color: ${(props) => (props.color ? props.color : props.theme.colors.fg)};
+  letter-spacing: 0;
+
+  @media only screen and (min-width: 769px) {
+    font-size: 2.3rem;
+  }
+`;
+
+const B1 = styled.p<TypographyProps>`
+  font-size: 1.6rem;
   letter-spacing: 0.5px;
   margin-bottom: 2rem;
 `;
 
-const Overline = styled.span`
+const Overline = styled.span<TypographyProps>`
   font-size: 1.1rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
 `;
 
-// should I export everything as <Font> and access like <Font.H1>?
-
 /*
  * Component
  */
 
-export const Display1: FC = (props) => {
-  const { children } = props;
+export const Heading1: FC<TypographyProps> = (props) => {
+  const { children, ...rest } = props;
 
-  return <H1>{children}</H1>;
+  return <H1 {...rest}>{children}</H1>;
 };
 
-export const Heading1: FC = (props) => {
-  const { children } = props;
+export const Heading2: FC<TypographyProps> = (props) => {
+  const { children, ...rest } = props;
 
-  return <H1>{children}</H1>;
+  return <H2 {...rest}>{children}</H2>;
 };
 
-export const Heading2: FC = (props) => {
-  const { children } = props;
+export const Heading3: FC<TypographyProps> = (props) => {
+  const { children, ...rest } = props;
 
-  return <H2>{children}</H2>;
+  return <H3 {...rest}>{children}</H3>;
 };
 
-export const Heading3: FC = (props) => {
-  const { children } = props;
+export const Heading4: FC<TypographyProps> = (props) => {
+  const { children, ...rest } = props;
 
-  return <H3>{children}</H3>;
+  return <H4 {...rest}>{children}</H4>;
 };
 
-export const Heading4: FC = (props) => {
-  const { children } = props;
+export const Heading5: FC<TypographyProps> = (props) => {
+  const { children, ...rest } = props;
 
-  return <H4>{children}</H4>;
+  return <Subtitle {...rest}>{children}</Subtitle>;
 };
 
-export const Heading5: FC = (props) => {
-  const { children } = props;
+export const Heading6: FC<TypographyProps> = (props) => {
+  const { children, ...rest } = props;
 
-  return <Overline>{children}</Overline>;
+  return <Overline {...rest}>{children}</Overline>;
 };
 
-export const Paragraph: FC = (props) => {
-  const { children } = props;
+export const Body1: FC<TypographyProps> = (props) => {
+  const { children, ...rest } = props;
 
-  return <Body>{children}</Body>;
+  return <B1 {...rest}>{children}</B1>;
 };
 
-export const Emphasis: FC = (props) => {
+export const Emphasis: FC<TypographyProps> = (props) => {
   const { children } = props;
 
   return <em>{children}</em>;
 };
 
-export const Strong: FC = (props) => {
+export const Strong: FC<TypographyProps> = (props) => {
   const { children } = props;
 
   return <strong>{children}</strong>;

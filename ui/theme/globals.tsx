@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-// @import url("https://fonts.googleapis.com/css?family=Playfair+Display:600|PT+Sans&display=swap");
 export const GlobalStyle = createGlobalStyle`
   *,
   *::before,
@@ -17,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     box-sizing: border-box;
+    font-size: 1.6rem;
     font-family: "PT Sans", sans-serif;
     font-weight: 400;
     line-height: ${({ theme }) => theme.lineHeight};
@@ -37,6 +37,8 @@ export const GlobalStyle = createGlobalStyle`
 
   main {
     min-height: 100vh;
+    max-width: 90vw;
+    margin: 0 auto;
   }
 
   button,
