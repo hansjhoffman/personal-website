@@ -1,13 +1,13 @@
 import { FC } from "react";
 import styled from "styled-components";
-import { Colors } from "@ui/theme";
+import { Palette } from "@ui/theme";
 
 /*
  * Types
  */
 
 export type TypographyProps = {
-  color?: Colors;
+  color?: Palette;
 };
 
 /*
