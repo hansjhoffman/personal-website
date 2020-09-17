@@ -18,7 +18,7 @@ const H1 = styled.h1<TypographyProps>`
   font-family: "Playfair Display", sans-serif;
   font-weight: 600;
   line-height: ${({ theme }) => `${theme.lineHeight}em`};
-  color: ${({ theme }) => theme.colors.fg};
+  color: ${(props) => (props.color ? props.color : props.theme.colors.fg)};
   letter-spacing: 0;
 
   @media only screen and (min-width: 769px) {
