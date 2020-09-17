@@ -1,11 +1,10 @@
-import { FC } from "react";
+import { ComponentType, FC } from "react";
 import styled from "styled-components";
 import { Palette } from "@ui/theme";
 
 /*
  * Types
  */
-
 export type TypographyProps = {
   color?: Palette;
 };
@@ -15,7 +14,7 @@ export type TypographyProps = {
  */
 
 const H1 = styled.h1<TypographyProps>`
-  font-size: 6rem;
+  font-size: 4.5rem;
   font-family: "Playfair Display", sans-serif;
   font-weight: 600;
   line-height: ${({ theme }) => `${theme.lineHeight}em`};
@@ -23,7 +22,7 @@ const H1 = styled.h1<TypographyProps>`
   letter-spacing: 0;
 
   @media only screen and (min-width: 769px) {
-    font-size: 9.6rem;
+    font-size: 6.5rem;
   }
 `;
 
@@ -137,14 +136,24 @@ export const Body1: FC<TypographyProps> = (props) => {
   return <B1 {...rest}>{children}</B1>;
 };
 
-export const Emphasis: FC<TypographyProps> = (props) => {
-  const { children } = props;
+type FontNames = "body1" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
-  return <em>{children}</em>;
+type BoundaryTextProps = TypographyProps & { as: FontNames };
+
+const fontLookup: Record<FontNames, ComponentType<TypographyProps>> = {
+  body1: Body1,
+  h1: Heading1,
+  h2: Heading2,
+  h3: Heading3,
+  h4: Heading4,
+  h5: Heading5,
+  h6: Heading6,
 };
 
-export const Strong: FC<TypographyProps> = (props) => {
-  const { children } = props;
+export const Text: FC<BoundaryTextProps> = (props) => {
+  const { as, children, ...rest } = props;
 
-  return <strong>{children}</strong>;
+  const Component = fontLookup[as];
+
+  return <Component {...rest}>{children}</Component>;
 };

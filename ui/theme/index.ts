@@ -1,25 +1,27 @@
 import { DefaultTheme } from "styled-components";
 
+export enum Palette {
+  orange = "#ffc16c",
+  purple = "#191b2a",
+  white = "#ffffff",
+}
+
 declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
-      bg: string;
-      fg: string;
-      primary: string;
+      bg: Palette;
+      fg: Palette;
+      primary: Palette;
     };
     lineHeight: number;
   }
 }
 
-export enum Palette {
-  orange = "#ffc16c",
-}
-
 export const defaultTheme: DefaultTheme = {
   colors: {
-    bg: "#191b2a",
-    fg: "#ffffff",
-    primary: "#ffc16c",
+    bg: Palette.purple,
+    fg: Palette.white,
+    primary: Palette.orange,
   },
   lineHeight: 1.5,
 };
