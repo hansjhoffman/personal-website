@@ -37,8 +37,6 @@ export const GlobalStyle = createGlobalStyle`
 
   main {
     min-height: 100vh;
-    max-width: 90vw;
-    margin: 0 auto;
   }
 
   button,

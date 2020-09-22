@@ -7,7 +7,7 @@ import { Twitter } from "@ui/icons/Twitter";
 import { YouTube } from "@ui/icons/YouTube";
 import { Palette } from "@ui/theme";
 
-/*
+/**
  * Types
  */
 
@@ -22,7 +22,7 @@ export type IconProps = {
 
 type BoundaryIconProps = IconProps & { name: IconNames };
 
-/*
+/**
  * Component
  */
 
