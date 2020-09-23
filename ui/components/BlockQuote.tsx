@@ -20,6 +20,8 @@ const El = styled.blockquote`
   font-style: italic;
   border-left: ${({ theme }) => `2px solid ${theme.colors.accent}`};
   padding: 16px 20px;
+  max-width: 90vw;
+  margin: 0 auto;
 
   p {
     margin-bottom: 0.5em;

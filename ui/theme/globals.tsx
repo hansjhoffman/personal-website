@@ -35,10 +35,6 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  main {
-    min-height: 100vh;
-  }
-
   button,
   input,
   optgroup,

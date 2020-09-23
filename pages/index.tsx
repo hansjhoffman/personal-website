@@ -17,12 +17,13 @@ const HeroSection = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: inherit;
+  height: 100vh;
   max-width: 90vw;
   margin: 0 auto;
 
   @media only screen and (min-width: 769px) {
     flex-direction: row;
+    height: 700px;
   }
 `;
 
@@ -67,19 +68,28 @@ const Content = styled.div`
   }
 `;
 
-const CVSection = styled.section`
+const QuoteSection = styled.section`
+  display: flex;
+  align-items: center;
   background: ${({ theme }) => theme.colors.black};
+  height: 250px;
+
+  @media only screen and (min-width: 769px) {
+    height: 500px;
+    clip-path: polygon(100% 0, 100% 66%, 0 100%, 0 33%);
+  }
+`;
+
+const TechSection = styled.section`
   padding: 64px 0;
   height: auto;
 
   @media only screen and (min-width: 769px) {
-    background-image: url("geometric.svg");
-    background-repeat: no-repeat;
-    background-position: right;
+    padding: 0 0 64px 0;
   }
 `;
 
-const CVContentWrapper = styled.div`
+const TechWrapper = styled.div`
   max-width: 90vw;
   margin: 0 auto;
 `;
@@ -87,7 +97,7 @@ const CVContentWrapper = styled.div`
 const TechColumns = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, min-content);
   grid-gap: 32px;
   width: max-content;
 
@@ -95,12 +105,13 @@ const TechColumns = styled.div`
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
     grid-gap: 128px;
-    margin-bottom: 128px;
+    margin: 0 auto;
   }
 `;
 
 const SectionHeading = styled(Heading3)`
   width: min-content;
+  margin: 0 auto;
 
   &::after {
     content: "";
@@ -110,9 +121,11 @@ const SectionHeading = styled(Heading3)`
       `linear-gradient(90deg, ${theme.colors.primary} 0%, ${theme.colors.shadow} 35%)`};
     width: 100%;
     height: 4px;
-    margin-bottom: 32px;
+    margin-bottom: 64px;
   }
 `;
+
+const CVSection = styled.div``;
 
 /**
  * Component
@@ -157,8 +170,14 @@ const Home: FC = () => {
           </Content>
         </HeroSection>
 
-        <CVSection>
-          <CVContentWrapper>
+        <QuoteSection>
+          <BlockQuote author="Alan Perlis">
+            A language that doesn’t affect the way you think about programming is not worth knowing.
+          </BlockQuote>
+        </QuoteSection>
+
+        <TechSection>
+          <TechWrapper>
             <SectionHeading>Technologies</SectionHeading>
             <TechColumns>
               <List
@@ -175,12 +194,8 @@ const Home: FC = () => {
               />
               <List items={["Elixir", "Elm", "Haskell"]} title="One can dream..." />
             </TechColumns>
-            <BlockQuote author="Alan Perlis">
-              A language that doesn’t affect the way you think about programming is not worth
-              knowing.
-            </BlockQuote>
-          </CVContentWrapper>
-        </CVSection>
+          </TechWrapper>
+        </TechSection>
       </main>
     </>
   );
